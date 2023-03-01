@@ -1,0 +1,9 @@
+
+${AnsiColor.BLUE}  _____  ______          ________
+${AnsiColor.BLUE} / ____|/ __ \ \        / /  ____|
+${AnsiColor.BLUE}| |  __| |  | \ \  /\  / /| |__
+${AnsiColor.BLUE}| | |_ | |  | |\ \/  \/ / |  __|
+${AnsiColor.BLUE}| |__| | |__| | \  /\  /  | |____
+${AnsiColor.BLUE} \_____|\____/   \/  \/   |______|
+${AnsiColor.BLUE}${AnsiColor.DEFAULT}
+get off work early. version: 1.0.0-SNAPSHOT spring version: 3.0.3
