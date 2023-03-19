@@ -6,6 +6,8 @@ import router from './router'
 
 import 'virtual:windi.css'
 import 'virtual:windi-devtools'
+// import 'element-plus/theme-chalk/dark/css-vars.css'
+import '@/assets/css/element-var.scss'
 
 const app = createApp(App)
 

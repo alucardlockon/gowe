@@ -6,4 +6,4 @@ ${AnsiColor.BLUE}| | |_ | |  | |\ \/  \/ / |  __|
 ${AnsiColor.BLUE}| |__| | |__| | \  /\  /  | |____
 ${AnsiColor.BLUE} \_____|\____/   \/  \/   |______|
 ${AnsiColor.BLUE}${AnsiColor.DEFAULT}
-get off work early. version: 1.0.0-SNAPSHOT spring version: 3.0.3
+get off work early. version: 1.0.0-SNAPSHOT spring version: 2.7.9
