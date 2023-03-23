@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>com.github.alucardlockon</groupId>
+        <groupId>com.gowe</groupId>
         <artifactId>gowe-server</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>

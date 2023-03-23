@@ -1,0 +1,9 @@
+@forward 'element-plus/theme-chalk/src/dark/var.scss' with (
+$bg-color: (
+  'page': rgb(157,70,70),
+  '': #626aef,
+  'overlay': #246fb9,
+)
+);
+
+@use 'element-plus/theme-chalk/src/dark/var.scss' as *;

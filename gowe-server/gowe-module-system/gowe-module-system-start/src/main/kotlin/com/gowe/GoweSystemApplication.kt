@@ -1,4 +1,4 @@
-package com.github.alucardlockon.gowe
+package com.gowe
 
 import lombok.extern.slf4j.Slf4j
 import org.springframework.boot.autoconfigure.SpringBootApplication

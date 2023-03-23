@@ -7,14 +7,14 @@
     <artifactId>gowe-module-system-start</artifactId>
 
     <parent>
-        <groupId>com.github.alucardlockon</groupId>
+        <groupId>com.gowe</groupId>
         <artifactId>gowe-module-system</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.alucardlockon</groupId>
+            <groupId>com.gowe</groupId>
             <artifactId>gowe-core</artifactId>
         </dependency>
     </dependencies>

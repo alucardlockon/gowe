@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.alucardlockon</groupId>
+    <groupId>com.gowe</groupId>
     <artifactId>gowe-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -13,7 +13,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.9</version>
-        <relativePath />
+        <relativePath/>
     </parent>
 
     <properties>
@@ -24,6 +24,7 @@
         <spring.version>2.7.9</spring.version>
         <!--kotlin-->
         <kotlin.version>1.8.20-RC</kotlin.version>
+        <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     </properties>
 
     <modules>
@@ -32,56 +33,53 @@
         <module>gowe-module-system</module>
     </modules>
 
-    <dependencies>
-    </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <!--gowe-base-->
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-base</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-codegen</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-common</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-core</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <!--gowe-cloud-->
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-cloud</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <!--gowe-system-->
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-module-system</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-module-system-api</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-module-system-biz</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.alucardlockon</groupId>
+                <groupId>com.gowe</groupId>
                 <artifactId>gowe-module-system-start</artifactId>
                 <version>${gowe.version}</version>
             </dependency>
@@ -172,6 +170,20 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--打包发布用-->
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>internal releases</name>
+            <url>http://127.0.0.1:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+           <id>releases</id>
+           <name>internal releases</name>
+           <url>http://127.0.0.1:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -185,6 +197,13 @@
                         <goals>
                             <goal>compile</goal>
                         </goals>
+                        <!--区分java和kotlin目录-->
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>test-compile</id>
@@ -201,6 +220,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <executions>
+                    <!-- 替换会被 maven 特别处理的 default-compile -->
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <!-- 替换会被 maven 特别处理的 default-testCompile -->
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -228,10 +259,24 @@
                     <outputDirectory>${project.build.outputDirectory}</outputDirectory>
                     <filename>banner.txt</filename>
                     <includeInfo>true</includeInfo>
-                    <info>get off work early. version: ${gowe.version} spring version: ${spring.version} </info>
+                    <info>get off work early. version: ${gowe.version} spring version: ${spring.version}</info>
                     <font>big</font>
                     <color>blue</color>
                 </configuration>
+            </plugin>
+            <!--kotlin javadoc文档生成-->
+            <plugin>
+                <groupId>org.jetbrains.dokka</groupId>
+                <artifactId>dokka-maven-plugin</artifactId>
+                <version>1.8.10</version>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>dokka</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
