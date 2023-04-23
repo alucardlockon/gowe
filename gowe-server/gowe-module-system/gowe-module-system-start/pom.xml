@@ -17,6 +17,10 @@
             <groupId>com.gowe</groupId>
             <artifactId>gowe-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.gowe</groupId>
+            <artifactId>gowe-module-system-biz</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

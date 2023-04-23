@@ -11,13 +11,10 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 open class GoweSystemApplication
 
-
 private val log = LoggerFactory.getLogger(GoweSystemApplication::class.java)
 
 fun main(args: Array<String>) {
     runApplication<GoweSystemApplication>(*args)
-    log.info("gowe started !!")
+    log.info("========== gowe started !! ==========")
 }
-
-
 

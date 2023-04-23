@@ -45,3 +45,5 @@ coverage
 *.sw?
 
 *.iml
+
+rebel.xml
