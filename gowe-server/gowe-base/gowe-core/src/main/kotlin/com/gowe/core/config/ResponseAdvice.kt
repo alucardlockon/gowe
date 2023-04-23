@@ -30,6 +30,9 @@ class ResponseAdvice :ResponseBodyAdvice<Any> {
         if(body is String){
             return objectMapper?.writeValueAsString(ApiResult.success(body))
         }
+        if(body is ApiResult<*>){
+            return body
+        }
         return ApiResult.success(body)
     }
 

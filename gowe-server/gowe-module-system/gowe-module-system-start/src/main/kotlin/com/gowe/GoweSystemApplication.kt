@@ -1,6 +1,6 @@
 package com.gowe
 
-import org.slf4j.LoggerFactory
+import com.gowe.core.util.getLog
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -11,7 +11,7 @@ import org.springframework.boot.runApplication
 @SpringBootApplication
 open class GoweSystemApplication
 
-private val log = LoggerFactory.getLogger(GoweSystemApplication::class.java)
+private val log = getLog(GoweSystemApplication::class.java)
 
 fun main(args: Array<String>) {
     runApplication<GoweSystemApplication>(*args)
