@@ -16,7 +16,7 @@ open class WebMvcConfig: WebMvcConfigurer {
 
     override fun configureMessageConverters(converters: MutableList<HttpMessageConverter<*>>) {
         super.configureMessageConverters(converters)
-        converters.add(MappingJackson2HttpMessageConverter(objectMapper()))
+        converters.add(0,MappingJackson2HttpMessageConverter(objectMapper()))
     }
 
     @Bean

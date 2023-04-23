@@ -1,5 +1,6 @@
 package com.gowe.module.system.biz.controller
 
+import com.gowe.common.annotation.CustomApiResult
 import com.gowe.core.util.log
 import com.gowe.module.system.biz.entity.User
 import org.springframework.web.bind.annotation.GetMapping
@@ -58,6 +59,12 @@ class HelloWorldController {
         }
         log.info(output)
         return u
+    }
+
+    @CustomApiResult
+    @GetMapping("/say3")
+    fun say3(): String {
+        return "hello only"
     }
 
 }
